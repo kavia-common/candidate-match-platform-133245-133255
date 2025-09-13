@@ -15,7 +15,7 @@ const router = express.Router();
  * /assessments:
  *   post:
  *     summary: Submit assessment answers
- *     description: Accepts candidate answers and returns a mock graded result.
+ *     description: Accepts candidate answers and returns a mock graded result with breakdown.
  *     tags: [Assessments]
  *     requestBody:
  *       required: true
@@ -23,7 +23,7 @@ const router = express.Router();
  *         application/json:
  *           schema:
  *             type: object
- *             required: [candidateId, answers]
+ *             required: [candidateId, assessmentId, answers]
  *             properties:
  *               candidateId:
  *                 type: string
@@ -34,8 +34,12 @@ const router = express.Router();
  *               answers:
  *                 type: array
  *                 items:
- *                   type: string
- *                 example: ["A", "B", "C"]
+ *                   type: object
+ *                   properties:
+ *                     questionId:
+ *                       type: string
+ *                     selectedIndex:
+ *                       type: number
  *               score:
  *                 type: number
  *                 example: 75

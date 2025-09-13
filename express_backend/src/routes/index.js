@@ -3,9 +3,13 @@ const healthController = require('../controllers/health');
 
 // Feature routers
 const authRoutes = require('./auth');
+const authExtRoutes = require('./auth_ext');
 const assessmentsRoutes = require('./assessments');
+const assessmentsExtRoutes = require('./assessments_ext');
 const jobsRoutes = require('./jobs');
+const jobsExtRoutes = require('./jobs_ext');
 const usersRoutes = require('./users');
+const candidatesRoutes = require('./candidates');
 
 const router = express.Router();
 
@@ -41,8 +45,12 @@ router.get('/', healthController.check.bind(healthController));
 
 // Mount feature routes
 router.use('/', authRoutes);
+router.use('/', authExtRoutes);
 router.use('/', assessmentsRoutes);
+router.use('/', assessmentsExtRoutes);
 router.use('/', jobsRoutes);
+router.use('/', jobsExtRoutes);
 router.use('/', usersRoutes);
+router.use('/', candidatesRoutes);
 
 module.exports = router;
